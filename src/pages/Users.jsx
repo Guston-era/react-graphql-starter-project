@@ -153,7 +153,7 @@ const Users = () => {
                     }
                     onClick={addUserFunc}
                   >
-                    Submit
+                    {addUserResult.loading ? 'Loading...' : 'Submit'}
                   </Button>
                 </Form>
               </Card.Body>
