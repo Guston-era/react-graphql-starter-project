@@ -6,7 +6,7 @@ import { badgeGender } from '../functions'
 
 const Users = () => {
   const [name, setName] = useState('')
-  const [age, setAge] = useState(0)
+  const [age, setAge] = useState('')
   const [gender, setGender] = useState('')
   const [email, setEmail] = useState('')
   const [salaryDecimal, setSalaryDecimal] = useState(100000000000000.01)
@@ -81,15 +81,29 @@ const Users = () => {
                 <Form>
                   <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter name" />
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicAge">
                     <Form.Label>Age</Form.Label>
-                    <Form.Control type="number" placeholder="Enter Age" />
+                    <Form.Control
+                      type="number"
+                      placeholder="Enter Age"
+                      value={age}
+                      onChange={(e) => setAge(e.target.value)}
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicGender">
                     <Form.Label>Gender</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control
+                      as="select"
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
+                    >
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                       <option value="ladyboy">Ladyboy</option>
@@ -97,14 +111,30 @@ const Users = () => {
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </Form.Group>
 
                   <Form.Group className="mb-3" controlId="formBasicSalary">
                     <Form.Label>Salary Decimal</Form.Label>
-                    <Form.Control type="number" placeholder="Salary Decimal" />
+                    <Form.Control
+                      type="number"
+                      placeholder="Salary Decimal"
+                      value={salaryDecimal}
+                      onChange={(e) => setSalaryDecimal(e.target.value)}
+                    />
                   </Form.Group>
-                  <Button variant="primary" type="submit">
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    disabled={
+                      !name || !age || !salaryDecimal || !gender || !email
+                    }
+                  >
                     Submit
                   </Button>
                 </Form>
