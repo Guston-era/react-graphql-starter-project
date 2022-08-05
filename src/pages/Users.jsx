@@ -149,6 +149,7 @@ const Users = () => {
                     disabled={
                       !name || !age || !salaryDecimal || !gender || !email
                     }
+                    onClick={addUserFunc}
                   >
                     Submit
                   </Button>

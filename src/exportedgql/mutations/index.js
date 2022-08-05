@@ -1,17 +1,23 @@
 import { gql } from '@apollo/client'
 export const CREATE_USER = gql`
-  mutation createUser($name: String!, $age: Float) {
+  mutation createUser(
+    $name: String!
+    $age: Float
+    $gender: String!
+    $email: String
+    $salaryDecimal: float
+  ) {
     userCreate(
       record: {
         name: $name
         age: $age
-        gender: ladyboy
+        gender: $gender
         contacts: {
-          email: "mail@example.com"
+          email: $email
           phones: ["111-222-333-444", "444-555-666-777"]
         }
         someMixed: { a: 1, b: 2, c: [1, 2, 3, true, false, { sub: 1 }] }
-        salaryDecimal: "33333333333333333.33333333333333333"
+        salaryDecimal: $salaryDecimal
       }
     ) {
       recordId
