@@ -14,7 +14,7 @@ const Users = () => {
   const [salaryDecimal, setSalaryDecimal] = useState(100000000000000.01)
 
   //queries
-  const { error, loading, data } = useQuery(GET_MANY_USERS, {
+  const { error, loading, data, refetch } = useQuery(GET_MANY_USERS, {
     variables: {
       limit: 80,
     },
@@ -30,6 +30,10 @@ const Users = () => {
       salaryDecimal: parseFloat(salaryDecimal),
     },
   })
+
+  const refetchUsers = async () => {
+    refetch()
+  }
 
   console.log(addUserResult)
 
@@ -92,7 +96,9 @@ const Users = () => {
           <Col md={4} sm={12}>
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Add a User</Card.Title>
+                <Card.Title as="h4">
+                  Add a User <small>(mutation)</small>
+                </Card.Title>
               </Card.Header>
               <Card.Body>
                 <Form>
@@ -151,7 +157,10 @@ const Users = () => {
                     disabled={
                       !name || !age || !salaryDecimal || !gender || !email
                     }
-                    onClick={addUserFunc}
+                    onClick={() => {
+                      addUserFunc()
+                      refetchUsers()
+                    }}
                   >
                     {addUserResult.loading ? 'Loading...' : 'Submit'}
                   </Button>

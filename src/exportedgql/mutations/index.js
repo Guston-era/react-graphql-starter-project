@@ -16,6 +16,7 @@ export const CREATE_USER = gql`
           email: $email
           phones: ["111-222-333-444", "444-555-666-777"]
         }
+        languages: [{ language: "fr", skill: fluent }]
         someMixed: { a: 1, b: 2, c: [1, 2, 3, true, false, { sub: 1 }] }
         salaryDecimal: $salaryDecimal
       }
@@ -28,6 +29,10 @@ export const CREATE_USER = gql`
         contacts {
           email
           phones
+        }
+        languages {
+          language
+          skill
         }
         someMixed
         salaryDecimal
