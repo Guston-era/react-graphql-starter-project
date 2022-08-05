@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client'
 import React from 'react'
-import { Row, Col, Table } from 'react-bootstrap'
+import { Row, Col, Table, Badge } from 'react-bootstrap'
 import { GET_MANY_USERS } from '../exportedgql/queries'
 import { badgeGender } from '../functions'
 
@@ -49,11 +49,12 @@ const Users = () => {
                     <td>{u.contacts.email}</td>
                     <td>{u.salaryDecimal}</td>
                     <td>
-                      <ul>
-                        {u.languages.map((l, i) => (
-                          <li key={i}>{`${l.language} (${l.skill})`}</li>
-                        ))}
-                      </ul>
+                      {u.languages.map((l, i) => (
+                        //   <li key={i}>{`${l.language} (${l.skill})`}</li>
+                        <Badge pill bg="dark" className="m-1" key={i}>
+                          {`${l.language} (${l.skill})`}
+                        </Badge>
+                      ))}
                     </td>
                   </tr>
                 ))}
