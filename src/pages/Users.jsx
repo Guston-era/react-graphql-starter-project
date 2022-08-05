@@ -31,6 +31,8 @@ const Users = () => {
     },
   })
 
+  console.log(addUserResult)
+
   return (
     <div>
       {error && (
@@ -145,7 +147,7 @@ const Users = () => {
                   </Form.Group>
                   <Button
                     variant="primary"
-                    type="submit"
+                    type="button"
                     disabled={
                       !name || !age || !salaryDecimal || !gender || !email
                     }
