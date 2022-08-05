@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client'
 import React from 'react'
 import { Row, Col, Table } from 'react-bootstrap'
 import { GET_MANY_USERS } from '../exportedgql/queries'
+import { badgeGender } from '../functions'
 
 const Users = () => {
   const { error, loading, data } = useQuery(GET_MANY_USERS, {
@@ -44,7 +45,7 @@ const Users = () => {
                   <tr key={u._id}>
                     <td style={{ color: 'blue' }}>{u.name}</td>
                     <td>{u.age}</td>
-                    <td>{u.gender}</td>
+                    <td>{badgeGender(u.gender)}</td>
                     <td>{u.contacts.email}</td>
                     <td>{u.salaryDecimal}</td>
                     <td>
