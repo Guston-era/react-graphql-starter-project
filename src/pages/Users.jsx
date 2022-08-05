@@ -1,10 +1,15 @@
 import { useQuery } from '@apollo/client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Row, Col, Table, Badge, Card, Form, Button } from 'react-bootstrap'
 import { GET_MANY_USERS } from '../exportedgql/queries'
 import { badgeGender } from '../functions'
 
 const Users = () => {
+  const [name, setName] = useState('')
+  const [age, setAge] = useState(0)
+  const [gender, setGender] = useState('')
+  const [email, setEmail] = useState('')
+  const [salaryDecimal, setSalaryDecimal] = useState(100000000000000.01)
   const { error, loading, data } = useQuery(GET_MANY_USERS, {
     variables: {
       limit: 80,
