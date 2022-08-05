@@ -3,9 +3,9 @@ export const CREATE_USER = gql`
   mutation createUser(
     $name: String!
     $age: Float
-    $gender: String!
+    $gender: EnumUserGender
     $email: String
-    $salaryDecimal: float
+    $salaryDecimal: BSONDecimal
   ) {
     userCreate(
       record: {
