@@ -22,7 +22,13 @@ const Users = () => {
 
   //mutatioons
   const [addUserFunc, addUserResult] = useMutation(CREATE_USER, {
-    variables: { name, age: parseFloat(age), gender, email, salaryDecimal },
+    variables: {
+      name,
+      age: parseFloat(age),
+      gender,
+      email,
+      salaryDecimal: parseFloat(salaryDecimal),
+    },
   })
 
   return (
