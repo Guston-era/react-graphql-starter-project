@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client'
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Row, Col, Table } from 'react-bootstrap'
 import { GET_MANY_USERS } from '../exportedgql/queries'
 
 const Users = () => {
@@ -23,38 +23,44 @@ const Users = () => {
         </div>
       )}
       {data && (
-        <>
-          <Table hover striped>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Salary</th>
-                <th>Languages</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.userMany.map((u, i) => (
-                <tr key={u._id}>
-                  <td style={{ color: 'blue' }}>{u.name}</td>
-                  <td>{u.age}</td>
-                  <td>{u.gender}</td>
-                  <td>{u.contacts.email}</td>
-                  <td>{u.salaryDecimal}</td>
-                  <td>
-                    <ul>
-                      {u.languages.map((l, i) => (
-                        <li key={i}>{`${l.language} (${l.skill})`}</li>
-                      ))}
-                    </ul>
-                  </td>
+        <Row className="p-3">
+          <Col md={8}>
+            <h4>
+              Users Table <small>(GET_MANY_USERS query)</small>
+            </h4>
+            <Table hover striped bordered>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Email</th>
+                  <th>Salary</th>
+                  <th>Languages</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </>
+              </thead>
+              <tbody>
+                {data.userMany.map((u, i) => (
+                  <tr key={u._id}>
+                    <td style={{ color: 'blue' }}>{u.name}</td>
+                    <td>{u.age}</td>
+                    <td>{u.gender}</td>
+                    <td>{u.contacts.email}</td>
+                    <td>{u.salaryDecimal}</td>
+                    <td>
+                      <ul>
+                        {u.languages.map((l, i) => (
+                          <li key={i}>{`${l.language} (${l.skill})`}</li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Col>
+          <Col md={4}></Col>
+        </Row>
       )}
     </div>
   )
